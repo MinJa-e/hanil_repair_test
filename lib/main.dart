@@ -25,6 +25,8 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
 
+  bool auto_login=false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -69,7 +71,7 @@ class _MainState extends State<Main> {
                 child: Container(
                   padding: EdgeInsets.all(106),
                   child: Column(
-                    children: <Widget>[
+                    children: [
                       TextField(
                         style: TextStyle(
                             color:Colors.white,
@@ -81,7 +83,7 @@ class _MainState extends State<Main> {
                         ),
                         keyboardType: TextInputType.emailAddress,
                       ),
-                      Padding(padding: EdgeInsets.only(top:28)),
+                      Padding(padding: EdgeInsets.only(top:12)),
                       TextField(
                         style: TextStyle(
                           color:Colors.white,
@@ -94,6 +96,28 @@ class _MainState extends State<Main> {
                           keyboardType: TextInputType.text,
                           obscureText: true,
                       ),
+                      Padding(padding: EdgeInsets.only(top:8)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                            Text("자동 로그인",
+                              style: TextStyle(
+                              color: Colors.white,
+                                fontSize: 12,
+                              ),
+                            ),
+                            Switch(
+                              value: auto_login,
+                              onChanged: (value) {
+                                setState(() {
+                                  auto_login = value;
+                                });
+                              },
+                              activeColor: Colors.blue,
+                            )
+                          ],
+                      ),
+
                     ],
                   ),
                 ),
